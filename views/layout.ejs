@@ -1,0 +1,22 @@
+<html>
+<head>
+    <title>
+        ProTurf <%= title%>
+    </title>
+    <link rel="stylesheet" type="text/css" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+
+    <%- style %>
+</head>
+
+<body>
+    <%- include('_header'); %>
+
+        <%- body %>
+
+    <%- include('_footer'); %>
+
+    <%- script %>
+</body>
+</html>
