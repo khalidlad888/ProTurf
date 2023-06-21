@@ -1,0 +1,67 @@
+/* CSS for home page */
+#home-container {
+    height: 75vh;
+    margin: 0 auto;
+    padding: 20px;
+    background-image: url('/images/baseballTurf.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    opacity: 0.9;
+    display: flex;
+}
+
+#feed-turfs {
+    width: 80%;
+    margin-bottom: 20px;
+}
+
+#turf-list-container ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#turf-list-container li {
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+    /* background-color: #29d429; */
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    border-radius: 10px;
+    background-image: url('/images/turf-logo.jpg');
+    background-size: contain;
+}
+
+#turf-data {
+    text-align: center;
+}
+
+#turf-data a {
+    color: white;
+    text-decoration: none;
+}
+
+#ads {
+    width: 20%;
+    height: 75vh;
+    /* background-color: #f9f9f9; */
+}
+
+/* Additional styles for customization */
+
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+};

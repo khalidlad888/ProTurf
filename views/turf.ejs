@@ -1,0 +1,48 @@
+<link rel="stylesheet" type="text/css" href="../css/turf.css">
+
+
+<div id="turf-container">
+    <div id="turf-images-container">
+
+    </div>
+    <div id="turf-data-container">
+        <h2><%=turf.name%></h2>
+        <p>
+            <a> <strong>Address: </strong><%= turf.address%></a>
+            <a> <strong>Contact No: </strong><%= turf.number%></a>
+        </p>
+            <div>
+                <a>Book Here</a>
+            </div>
+            <small>
+                <strong>
+                    Pricing: 
+                </strong>
+                <%=turf.price%>
+            </small>
+            <form action="/turf/create-booking" method="post" id="booking-form">
+                <input type="date" name="date">
+                <select name="time" >
+                    <option value="6to7am">6:00am to 7:00 am</option>
+                    <option value="7to8am">7:00am to 8:00 am</option>
+                    <option value="8to9am">8:00am to 9:00 am</option>
+                    <option value="9to10am">9:00am to 10:00 am</option>
+                    <option value="10to11am">10:00am to 11:00 am</option>
+                    <option value="11to12pm">11:00am to 12:00 pm</option>
+                    <option value="12to1pm">12:00pm to 1:00 pm</option>
+                    <option value="1to2pm">1:00pm to 2:00 pm</option>
+                    <option value="2to3pm">2:00pm to 3:00 pm</option>
+                    <option value="3to4pm">3:00pm to 4:00 pm</option>
+                    <option value="4to5pm">4:00pm to 5:00 pm</option>
+                    <option value="5to6pm">5:00pm to 6:00 pm</option>
+                    <option value="6to7pm">6:00pm to 7:00 pm</option>
+                    <option value="7to8pm">7:00pm to 8:00 pm</option>
+                    <option value="8to9pm">8:00pm to 9:00 pm</option>
+                    <option value="9to10pm">9:00pm to 10:00 pm</option>
+                    <option value="10to11pm">10:00pm to 11:00 pm</option>
+                </select>
+                <input type="hidden" name="turf" value="<%=turf._id%>">
+                <input type="submit" value="Book Now">
+            </form>
+    </div>
+</div>
