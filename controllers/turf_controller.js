@@ -25,13 +25,33 @@ module.exports.destroy = async function (req, res) {
 
 module.exports.render = async function (req, res) {
     try {
+        // Retrieve the turf ID from the request params
         let turf = await Turf.findById(req.params.id);
-        let booking = await Booking.find({});
+
+        // Get the current date 
+        const currentDate = new Date().toISOString().split('T')[0];
+
+        let selectedDate = currentDate;
+        if (req.query.selectedDate) {
+            let newSelectedDate = new Date(req.query.selectedDate);
+            selectedDate = newSelectedDate.toISOString().split('T')[0];
+        };
+
+        // Fetch the bookings data for the selected date for the current turf
+        const bookings = await Booking.find({
+            date: selectedDate,
+            turf: turf
+        }).populate('user', 'name');
+
+        // Render the turf page template (assuming you have a "turf.ejs" template file)
         return res.render('turf', {
             title: " | Kolhapur",
             turf: turf,
-            booking: booking,
+            currentDate: currentDate,
+            selectedDate: selectedDate,
+            bookings: bookings,
         });
+
     } catch (err) {
         console.log('Error in displaying turfs', err);
     }
@@ -49,6 +69,12 @@ module.exports.createBooking = async function (req, res) {
             console.log("Booking already exists");
             return res.redirect('back');
         }
+
+        let notDate = req.body.date;
+        if (!notDate){
+            console.error("Please select the date");
+            return res.redirect('back');
+        };
 
         let turf = await Turf.findById(req.body.turf)
         if (turf) {

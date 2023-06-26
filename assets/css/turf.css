@@ -1,4 +1,4 @@
-/* Reset default margins and paddings */
+Reset default margins and paddings
 body,
 h1,
 h2,
@@ -21,7 +21,7 @@ select {
 
 /* Style for the images container */
 #turf-images-container {
-    /* Add your styles for the images container here */
+    margin: auto;
 }
 
 /* Style for the data container */
@@ -91,4 +91,52 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
     background-color: #45a049;
+}
+
+#book-link {
+    width: 120px;
+    height: 30px;
+    background-color: lightblue;
+    border: 1px solid #66a3d2;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#book-link:hover {
+    background-color: #99ccff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+#bookings-container {
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+#select-date-form {
+    margin-bottom: 20px;
+}
+
+#select-date-input {
+    display: block;
+    width: 200px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 5px;
 }
