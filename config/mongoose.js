@@ -1,7 +1,8 @@
 //Setting up mongoose configuration
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://127.0.0.1:27017/proturf_database');
+
+mongoose.connect('mongodb+srv://khalidlad888:hbM11jO7r3XnX2aw@clusterkop.ngdlznp.mongodb.net/');
 
 
 const db = mongoose.connection;

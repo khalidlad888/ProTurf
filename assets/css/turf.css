@@ -1,5 +1,4 @@
-Reset default margins and paddings
-body,
+/* body,
 h1,
 h2,
 p,
@@ -11,7 +10,6 @@ select {
     padding: 0;
 }
 
-/* Style for the main container */
 #turf-container {
     max-width: 600px;
     margin: 0 auto;
@@ -19,35 +17,29 @@ select {
     background-color: #f5f5f5;
 }
 
-/* Style for the images container */
 #turf-images-container {
     margin: auto;
 }
 
-/* Style for the data container */
 #turf-data-container {
     margin-top: 20px;
 }
 
-/* Style for the heading */
 h2 {
     font-size: 24px;
     margin-bottom: 10px;
 }
 
-/* Style for the address and contact */
 p {
     margin-bottom: 10px;
 }
 
-/* Style for the address and contact links */
 a {
     text-decoration: none;
     color: #333;
     margin-right: 10px;
 }
 
-/* Style for the book link */
 a[href="#booking-form"] {
     display: block;
     margin-top: 10px;
@@ -55,64 +47,24 @@ a[href="#booking-form"] {
     color: #333;
 }
 
-/* Style for the pricing */
 small {
     display: block;
     margin-top: 10px;
     color: #666;
 }
 
-/* Style for the booking form */
 #booking-form {
     margin-top: 20px;
 }
 
-/* Style for the form elements */
 input[type="date"],
 select {
     display: block;
     margin-bottom: 10px;
 }
 
-/* Style for the hidden input */
 input[type="hidden"] {
     display: none;
-}
-
-/* Style for the submit button */
-input[type="submit"] {
-    background-color: #4caf50;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-input[type="submit"]:hover {
-    background-color: #45a049;
-}
-
-#book-link {
-    width: 120px;
-    height: 30px;
-    background-color: lightblue;
-    border: 1px solid #66a3d2;
-    border-radius: 4px;
-    text-align: center;
-    line-height: 20px;
-    cursor: pointer;
-    font-size: 14px;
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: bold;
-    color: black;
-    text-decoration: none;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-#book-link:hover {
-    background-color: #99ccff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 #bookings-container {
@@ -139,4 +91,162 @@ ul {
 
 li {
     margin-bottom: 5px;
+    hbM11jO7r3XnX2aw
+} */
+
+
+/* Main container */
+#turf-container {
+    display: flex;
+    max-width: auto;
+    min-height: 75vh;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
 }
+
+/* Turf images container */
+#turf-images-container {
+    flex: 1;
+    text-align: center;
+}
+
+/* Turf image */
+#turf-images-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Turf data container */
+#turf-data-container {
+    flex: 1;
+    padding-left: 20px;
+}
+
+/* Turf name */
+#turf-data-container h2 {
+    font-size: 24px;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* Address and contact info */
+#turf-data-container p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+/* Book button */
+#book-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Pricing information */
+#turf-data-container p strong {
+    font-weight: bold;
+}
+
+/* Booking form */
+#booking-form {
+    margin-top: 20px;
+}
+
+/* Bookings container */
+#bookings-container {
+    margin-top: 40px;
+}
+
+/* Select date form */
+#select-date-form {
+    margin-bottom: 20px;
+}
+
+/* Bookings list */
+#bookings-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Bookings list item */
+#bookings-container ul li {
+    margin-bottom: 5px;
+}
+
+#select-date-input {
+    width: 30%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Bookings for selected date */
+#bookings-container h3 {
+    font-size: 18px;
+    color: #333;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* No bookings message */
+#bookings-container p {
+    color: #666;
+}
+
+/* Bookings list */
+#bookings-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Bookings list item */
+#bookings-container ul li {
+    margin-bottom: 5px;
+}
+
+
+#booking-form input[type="date"] {
+    width: 30%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Time select in "Book Here" section */
+#booking-form select {
+    width: 30%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Confirm Booking button */
+#booking-form input[type="submit"] {
+    display: block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+input[type="submit"]:hover {
+    background-color: #45a049;
+} 
