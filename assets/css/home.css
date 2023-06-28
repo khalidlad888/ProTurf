@@ -1,4 +1,3 @@
-/* CSS for home page */
 #home-container {
     height: 75vh;
     margin: 0 auto;
@@ -27,7 +26,6 @@
     width: 150px;
     height: 150px;
     margin: 10px;
-    /* background-color: #29d429; */
     padding: 10px;
     display: flex;
     justify-content: center;
@@ -49,10 +47,7 @@
 #ads {
     width: 20%;
     height: 75vh;
-    /* background-color: #f9f9f9; */
 }
-
-/* Additional styles for customization */
 
 h1 {
     font-size: 24px;
@@ -65,24 +60,3 @@ h2 {
     font-weight: bold;
     margin-bottom: 10px;
 };
-
-/*
-@media only screen and (min-width: 1080px) {
-    #home-container {
-        flex-direction: column;
-    }
-
-    #feed-turfs {
-        width: 100%;
-    }
-
-    #ads {
-        width: 100%;
-    }
-
-    #turf-list-container li {
-        width: 100%;
-        height: auto;
-        margin: 10px 0;
-    }
-}*/
