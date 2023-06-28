@@ -1,28 +1,26 @@
 <link rel="stylesheet" type="text/css" href="../css/home.css">
-
-<div id="home-container">
+<div id="home-container" class="container">
     <section id="feed-turfs">
         <% if (locals.user) { %>
-            <h2>Available Turfs in your area</h2>
+            <h2 class="mb-3">Available Turfs in your area</h2>
             <div id="turf-list-container">
-                <ul>
+                <ul class="list-unstyled">
                     <% for (let i of turf) { %>
-                        <li>
-                            <div id="turf-data">
-                                <a href="/turf/<%=i.id%>"><%=i.name%></a>
+                        <li class="mb-3">
+                            <div id="turf-data" class="card">
+                                <div class="card-body">
+                                    <a href="/turf/<%=i.id%>" class="card-link"><%=i.name%></a>
+                                </div>
                             </div>
                         </li>
                     <% } %>
                 </ul>
             </div>
-            <% } %>
+        <% } %>
     </section>
 
     <section id="ads">
 
     </section>
-
-
-
 </div>
 <script src="/js/home.js"></script>

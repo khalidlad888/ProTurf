@@ -9,6 +9,7 @@ const homeController = require('../controllers/home_controller');
 router.get('/', homeController.home);
 
 router.use('/users', require('./users'));
+router.use('/admins', require('./admins'));
 router.use('/api', require('./api'));
 router.use('/turf', require('./turf'));
 

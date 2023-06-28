@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="/css/admin_sign_up.css">
+
+<div class="container">
+    <div id="user_sign_up_form">
+        <h1>Sign Up</h1>
+
+        <form action="/admins/create" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="text" name="loginID" placeholder="Your Login ID" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="number" name="number" placeholder="Mobile No" required>
+            <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+
+            <input type="submit" value="Sign Up">
+        </form>
+    </div>
+</div>

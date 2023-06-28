@@ -30,6 +30,10 @@ const turfSchema = new mongoose.Schema({
         min: 0,
         max: 5
     },
+    admin: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Admin'  
+    },
     bookings: [
         {
             type: mongoose.Schema.Types.ObjectId,

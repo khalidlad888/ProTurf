@@ -2,7 +2,7 @@ const User = require('../models/user');
 
 module.exports.signUp = function (req, res) {
     if (req.isAuthenticated()) {
-        return res.redirect('/users/profile');
+        return res.redirect('/');
     };
 
     return res.render('user_sign_up', {
@@ -13,7 +13,7 @@ module.exports.signUp = function (req, res) {
 //rendering the signin page
 module.exports.signIn = function (req, res) {
     if (req.isAuthenticated()) {
-        return res.redirect('/users/profile');
+        return res.redirect('/');
     };
 
     return res.render('user_sign_in', {
@@ -31,7 +31,7 @@ module.exports.create = async function (req, res) {
         User.findOne({ email: req.body.email }).then((user) => {
             if (!user) {
                 let user = User.create(req.body);
-                console.log('Signed Up Successfully');
+                console.log(' User Signed Up Successfully');
                 return res.redirect('/users/sign-in');
             } else {
                 return res.redirect('back');
@@ -45,7 +45,7 @@ module.exports.create = async function (req, res) {
 
 //Sign ip data and create the session for the user
 module.exports.createSession = function (req, res) {
-    console.log('Signed In Successfully');
+    console.log('User Signed In Successfully');
     return res.redirect('/');
 };
 
@@ -55,7 +55,7 @@ module.exports.destroySession = function (req, res) {
             // req.flash('error', 'Error in logging out');
             console.log(err, "Error in logging out");
         };
-        console.log('Signed Out Successfully');
+        console.log('User Signed Out Successfully');
         return res.redirect('/');
     });
 };
