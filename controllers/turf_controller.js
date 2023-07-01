@@ -59,9 +59,11 @@ module.exports.render = async function (req, res) {
 
 module.exports.createBooking = async function (req, res) {
     try {
+        //CHECKING EXISTING BOOKING
         let existingBooking = await Booking.findOne({
             date: req.body.date,
-            time: req.body.time,
+            startTime: req.body.startTime,
+            endTime: req.body.endTime,
             turf: req.body.turf
         });
 
@@ -70,17 +72,35 @@ module.exports.createBooking = async function (req, res) {
             return res.redirect('back');
         }
 
+        //CHECKING DATE SELECTED OR NOT
         let notDate = req.body.date;
-        if (!notDate){
+        if (!notDate) {
             console.error("Please select the date");
             return res.redirect('back');
         };
+
+        //checking if booking is doen for min one hour
+        let startTime = req.body.startTime;
+        let endTime = req.body.endTime;
+        // Convert start time and end time to Date objects
+        const start = new Date(`2000-01-01 ${startTime}`);
+        const end = new Date(`2000-01-01 ${endTime}`);
+
+        // Calculate the time difference in minutes
+        const diffInMinutes = Math.floor((end - start) / 1000 / 60);
+
+        // Check if the time difference is less than 60 minutes
+        if (diffInMinutes < 60) {
+            console.log('End time should be at least 1 hour after the start time');
+            return res.redirect('back');
+        }
 
         let turf = await Turf.findById(req.body.turf)
         if (turf) {
             let booking = await Booking.create({
                 date: req.body.date,
-                time: req.body.time,
+                startTime: req.body.startTime,
+                endTime: req.body.endTime,
                 user: req.user._id,
                 turf: req.body.turf
             })

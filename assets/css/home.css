@@ -1,62 +1,104 @@
+body {
+    background: linear-gradient(60deg, #a4f2f2, #8bc78b, #33c933);
+}
+
+/* Additional CSS styles */
 #home-container {
-    height: 75vh;
-    margin: 0 auto;
+    margin: 20px auto;
+    max-width: 800px;
     padding: 20px;
-    background-image: url('/images/baseballTurf.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    opacity: 0.9;
+    /* background: linear-gradient(120deg, #7bdff2, #17a2b8); */
+    border-radius: 5px;
+}
+
+
+#feed-matches {
+    margin-bottom: 30px;
+}
+
+#feed-matches h2 {
+    font-size: 24px;
+    color: #333;
+}
+
+#host-match-container {
     display: flex;
+    flex-direction: row;
 }
 
-#feed-turfs {
-    width: 80%;
-    margin-bottom: 20px;
-}
-
-#turf-list-container ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-#turf-list-container li {
-    width: 150px;
-    height: 150px;
+.host-match {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
     margin: 10px;
-    padding: 10px;
-    display: flex;
     justify-content: center;
-    align-items: end;
-    border-radius: 10px;
-    background-image: url('/images/turf-logo.jpg');
-    background-size: contain;
 }
 
-#turf-data {
+.host-match a {
+    text-decoration: none;
+    color: #333333;
+    font-weight: bold;
+    font-style: italic;
     text-align: center;
 }
 
-#turf-data a {
-    color: white;
+#match-list-container {
+    margin-top: 20px;
+}
+
+#match-list-container .card-body {
+    padding: 10px;
+}
+
+#match-list-container .card-link {
+    color: #007bff;
     text-decoration: none;
 }
 
-#ads {
-    width: 20%;
-    height: 75vh;
+#match-list-container .card-link:hover {
+    text-decoration: underline;
 }
 
-h1 {
+
+
+#feed-turfs {
+    margin-bottom: 30px;
+}
+
+#feed-turfs h2 {
     font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
+    color: #333;
 }
 
-h2 {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
-};
+#turf-list-container {
+    margin-top: 20px;
+}
+
+#turf-list-container .card-body {
+    padding: 10px;
+}
+
+#turf-list-container .card-link {
+    color: #007bff;
+    text-decoration: none;
+}
+
+#turf-list-container .card-link:hover {
+    text-decoration: underline;
+}
+
+.card {
+    background: linear-gradient(45deg, white, darkgrey);
+    padding: 10px;
+    border-radius: 40px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    outline: none;
+    border: none;
+}
+
+/* #ads {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+} */

@@ -6,10 +6,14 @@ const bookingSchema = new mongoose.Schema({
         default: Date,
         required: true     
     },
-    time: {
+    startTime: {
         type: String,
-        enum: ['6to7am','7to8am','8to9am','9to10am','10to11am','11to12pm','12to1pm','1to2pm','2to3pm','3to4pm','4to5pm','5to6pm','6to7pm','7to8pm','8to9pm','9to10pm','10to11pm'],
+        // enum: ['6to7am','7to8am','8to9am','9to10am','10to11am','11to12pm','12to1pm','1to2pm','2to3pm','3to4pm','4to5pm','5to6pm','6to7pm','7to8pm','8to9pm','9to10pm','10to11pm'],
         required: true,
+    },
+    endTime: {
+        type: String,
+        required: true
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,

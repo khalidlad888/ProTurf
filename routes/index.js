@@ -12,6 +12,8 @@ router.use('/users', require('./users'));
 router.use('/admins', require('./admins'));
 router.use('/api', require('./api'));
 router.use('/turf', require('./turf'));
+router.use('/matches', require('./matches'));
+
 
 //exporting router
 module.exports = router;

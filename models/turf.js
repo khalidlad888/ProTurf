@@ -25,6 +25,9 @@ const turfSchema = new mongoose.Schema({
     photos: {
         type: [String]
     },
+    logo: {
+        type: String
+    },
     rating: {
         type: Number,
         min: 0,
