@@ -1,8 +1,19 @@
 const mongoose = require('mongoose');
 
 const matchSchema = new mongoose.Schema({
-    name: {
+    matchName: {
         type: String,
+        required: true,
+        unique: true
+    },
+    gameName: {
+        type: String,
+        enum: ['Cricket', 'Football'],
+        required: true
+    },
+    gameLevel: {
+        type: String,
+        enum: ['Beginner', 'Amatuer', 'Intermediate', 'Skilled', 'Experienced'],
         required: true
     },
     date: {
@@ -11,8 +22,7 @@ const matchSchema = new mongoose.Schema({
         required: true     
     },
     time: {
-        type: String,
-        enum: ['6to7am','7to8am','8to9am','9to10am','10to11am','11to12pm','12to1pm','1to2pm','2to3pm','3to4pm','4to5pm','5to6pm','6to7pm','7to8pm','8to9pm','9to10pm','10to11pm'],
+        type: [String],
         required: true,
     },
     user: {

@@ -1,3 +1,8 @@
+body {
+    background: linear-gradient(75deg, #a4f2f2, #8bc78b, #33c933);
+    margin: 0px;
+}
+
 /* Additional CSS styles */
 #turf-container {
     display: flex;
@@ -82,13 +87,27 @@
 }
 
 #booking-timeslot {
-    background-color: #f5f5f5;
+    background: linear-gradient(145deg, #f1f2a4, #d1af88, #c96333);
     padding: 5px 10px;
     border-radius: 5px;
     margin-bottom: 5px;
+    width: 200px;
 }
 
-body {
-    background: linear-gradient(60deg, #a4f2f2, #8bc78b, #33c933);
-    margin: 0px;
+.btn-secondary{
+    padding: 2px;
+    margin: 4px;
+    width: 70px;
+    font-size: 0.95rem;
+}
+
+.btn-booked{
+    background: linear-gradient(145deg, #f1f2a4, #d1af88, #c96333);
+    padding: 2px;
+    margin: 4px;
+    font-size: 0.95rem;
+    color: black;
+    border: none;
+    width: 70px;
+    outline: none;
 }

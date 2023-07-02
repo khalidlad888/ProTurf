@@ -10,10 +10,28 @@ module.exports.render = async function (req, res) {
             let user = await User.find({});
             let turf = await Turf.find({});
             let match = await Match.find({});
+            // Get the current date 
+            const currentDate = new Date().toISOString().split('T')[0];
+
+            let selectedDate = currentDate;
+            if (req.query.selectedDate) {
+                let newSelectedDate = new Date(req.query.selectedDate);
+                selectedDate = newSelectedDate.toISOString().split('T')[0];
+            };
+
+            // Fetch the bookings data for the selected date for the current turf
+            const bookings = await Booking.find({
+                date: selectedDate,
+                turf: turf
+            }).populate('user', 'name');
+
             return res.render('matches', {
                 title: " | Create Match",
                 turf: turf,
+                bookings: bookings,
                 matches: match,
+                currentDate: currentDate,
+                selectedDate: selectedDate,
                 users: user
             });
         } else {
@@ -26,76 +44,65 @@ module.exports.render = async function (req, res) {
 
 
 module.exports.createMatch = async function (req, res) {
-    // console.log(req.body.startTime);
-    // try {
-    //     let existingBooking = await Booking.findOne({
-    //         date: req.body.date,
-    //         time: req.body.time,
-    //         turf: req.body.turf
-    //     });
+    try {
+        //CHECKING DATE AND TIME SELECTED OR NOT
+        let notDate = req.body.date;
+        if (!notDate) {
+            console.error("Please select the date");
+            return res.redirect('back');
+        };
 
-    //     if (existingBooking) {
-    //         console.log("Booking already exists");
-    //         return res.redirect('back');
-    //     }
+        let notTime = req.body.time;
+        if (!notTime) {
+            console.error("Please select the time");
+            return res.redirect('back');
+        };
 
-    //     let notDate = req.body.date;
-    //     if (!notDate){
-    //         console.error("Please select the date");
-    //         return res.redirect('back');
-    //     };
+        //CHECKING EXISTING BOOKING
+        let existingBooking = await Booking.findOne({
+            date: req.body.date,
+            time: req.body.time,
+            turf: req.body.turf[0]
+        });
 
-    //     let turf = await Turf.findById(req.body.turf)
-    //     if (turf) {
-    //         let booking = await Booking.create({
-    //             date: req.body.date,
-    //             time: req.body.time,
-    //             user: req.user._id,
-    //             turf: req.body.turf
-    //         })
+        if (existingBooking) {
+            console.log("Booking already exists");
+            return res.redirect('back');
+        }
 
-    //         turf.bookings.push(booking);
-    //         turf.save();
-    //         console.log("Match is created and booking is done");
-    //         return res.redirect('back');
-    //     }
-    // } catch (err) {
-    //     console.log('Error in creating booking', err);
-    // };
+        let turf = await Turf.findById(req.body.turf)
+        if (turf) {
+            let booking = await Booking.create({
+                date: req.body.date,
+                time: req.body.time,
+                user: req.user._id,
+                turf: req.body.turf[0]
+            })
+
+            turf.bookings.push(booking);
+            turf.save();
+            console.log("Booking is done");
+        }
+
+        let match = await Match.findOne({matchName: req.body.matchName})
+        if (!match){
+            let match = await Match.create({
+                date: req.body.date,
+                time: req.body.time,
+                user: req.user._id,
+                turf: req.body.turf[0],
+                matchName: req.body.matchName,
+                gameName: req.body.gameName,
+                gameLevel: req.body.gameLevel
+            });
+            console.log("Match Created successfully");
+            return res.redirect('back');
+        }else{
+            console.log("Similar Match Name already exists");
+            return res.redirect('back');
+        }
+
+    } catch (err) {
+        console.log('Error in creating match', err);
+    };
 };
-
-
-// Define a route to handle the form submission
-// app.post('/host-match', (req, res) => {
-//     const { matchName, location, date, startTime, endTime } = req.body;
-
-    // // Convert start time and end time to Date objects
-    // const start = new Date(`2000-01-01T${startTime}`);
-    // const end = new Date(`2000-01-01T${endTime}`);
-
-    // // Calculate the time difference in minutes
-    // const diffInMinutes = Math.floor((end - start) / 1000 / 60);
-
-    // // Check if the time difference is less than 60 minutes
-    // if (diffInMinutes < 60) {
-    //     return res.status(400).send('End time should be at least 1 hour after the start time');
-    // }
-
-//     // Create a new match instance from the form data
-//     const newMatch = new Match({
-//         matchName,
-//         location,
-//         date,
-//         startTime,
-//         endTime
-//     });
-
-//     // Save the match to MongoDB
-//     newMatch.save()
-//         .then(() => {
-//             res.send('Match hosted successfully');
-//         })
-//         .catch((error) => {
-//             res.status(500).send('Error hosting match');
-//         });
-// });
