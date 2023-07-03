@@ -68,7 +68,7 @@ require('./config/passport-local-strategy')
 
 app.use(passport.setAuthenticatedUser);
 
-//using connect-flash
+//using connect-flash library
 app.use(flash());
 app.use(flashMware.setFlash);
 
