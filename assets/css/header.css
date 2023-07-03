@@ -1,0 +1,23 @@
+/* Additional CSS styles */
+.nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+}
+
+.nav-link:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand,
+.nav-link {
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+}
+
+#brand-name{
+    font-size: x-large;
+    padding: 0;
+}

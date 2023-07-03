@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(75deg, #a4f2f2, #8bc78b, #33c933);
+    background: linear-gradient(95deg, #a4f2f2, #8bc78b, #33c933);
     margin: 0px;
 }
 
@@ -84,18 +84,18 @@ body {
     padding: 2px;
     margin: 4px;
     margin-bottom: 8px;
-    width: 48px;
-    font-size: 0.7rem;
+    width: 50px;
+    font-size: 0.65rem;
 }
 
 .btn-booked{
     background: linear-gradient(145deg, #f1f2a4, #d1af88, #c96333);
     padding: 2px;
     margin: 4px;
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     margin-bottom: 8px;
     color: black;
     border: none;
-    width: 48px;
+    width: 50px;
     outline: none;
 }
