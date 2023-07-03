@@ -154,4 +154,15 @@
         </div>
     </div>
 </div>
+<script>
+    let config = {
+        altInput: true,
+        altFormat: "F j, Y",
+        dateFormat: "Y-m-d",
+        minDate: "today",
+        maxDate: new Date().fp_incr(30),
+        inline: true
+    }
+    flatpickr("#selected-date", config);
+</script>
 <script src="../js/turf.js"></script>
