@@ -62,7 +62,7 @@ module.exports.createMatch = async function (req, res) {
         let existingBooking = await Booking.findOne({
             date: req.body.date,
             time: req.body.time,
-            turf: req.body.turf[0]
+            turf: req.body.turf
         });
 
         if (existingBooking) {
@@ -76,7 +76,7 @@ module.exports.createMatch = async function (req, res) {
                 date: req.body.date,
                 time: req.body.time,
                 user: req.user._id,
-                turf: req.body.turf[0]
+                turf: req.body.turf
             })
 
             turf.bookings.push(booking);
@@ -90,7 +90,7 @@ module.exports.createMatch = async function (req, res) {
                 date: req.body.date,
                 time: req.body.time,
                 user: req.user._id,
-                turf: req.body.turf[0],
+                turf: req.body.turf,
                 matchName: req.body.matchName,
                 gameName: req.body.gameName,
                 gameLevel: req.body.gameLevel

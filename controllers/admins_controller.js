@@ -1,4 +1,5 @@
 const Admin = require('../models/admin');
+const Turf = require('../models/turf');
 
 
 module.exports.home = async function (req, res) {
@@ -67,12 +68,7 @@ module.exports.create = async function (req, res) {
 module.exports.createSession = async function (req, res) {
     try {
         console.log('Admin Signed In Successfully');
-        // let admins = await Admin.find({});
-        let admin = req.user;
-        return res.render('admin_home', {
-            title: " | Admin Home",
-            admin: admin
-        });
+        return res.redirect('/admins');
     } catch (err) {
         console.log("Error", err);
     }

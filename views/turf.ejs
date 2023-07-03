@@ -32,10 +32,11 @@
             <div id="select-date-form">
                 <h5>Select Date to check available bookings:</h5>
                 <form id="date-form">
-                    <input type="date" id="selected-date" name="selectedDate" onchange="submitDateForm()" value="<%= selectedDate %>" class="form-control">
+                    <input type="date" id="selected-date" name="selectedDate" onchange="submitDateForm()"
+                        value="<%= selectedDate %>" class="form-control">
                 </form>
             </div>
-            
+
             <form action="/turf/create-booking" method="post" id="booking-form">
                 <input type="hidden" name="date" value="<%= selectedDate %>">
                 <div class="form-group">
@@ -75,8 +76,48 @@
                     </div>
                 </div>
                 <input type="hidden" name="turf" value="<%=turf._id%>">
-                <input type="submit" value="Book Now" class="btn btn-primary mt-3">
+                <input type="submit" value="Book Now" class="btn btn-primary mt-3" data-toggle="modal"
+                    data-target="#confirmModal">
             </form>
+
+            <!-- Confirm Booking Modal -->
+            <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="confirmModalLabel">Confirm Booking</h5>
+                        </div>
+                        <div class="modal-body">
+                            <p>Please confirm your booking details.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-dark" data-dismiss="modal">Cancel</button>
+                            <input type="submit" value="Confirm" class="btn btn-primary">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error Modal -->
+            <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="errorModalLabel">Error</h5>
+                        </div>
+                        <div class="modal-body">
+                            <p>Please select the Time</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             <!-- <div id="bookings-container" class="mt-3" >
                 <% if (bookings.length> 0) { %>
                     <h5>Bookings for <%= selectedDate %> :</h5>
@@ -95,20 +136,20 @@
                     <p>No bookings found for <%= selectedDate %> .</p>
                 <% } %>
             </div> -->
-            <div id="bookings-container" class="mt-3" style="display: none;" >
+            <div id="bookings-container" class="mt-3" style="display: none;">
                 <% if (bookings.length> 0) { %>
                     <h5>Bookings for <%= selectedDate %> :</h5>
                     <ul>
                         <% bookings.forEach(booking=> {%>
-                            
-                                <div class="booking-timeslot">
-                                    <%= booking %>
-                                </div>
-                                <% }); %>
+
+                            <div class="booking-timeslot">
+                                <%= booking %>
+                            </div>
+                            <% }); %>
                     </ul>
-                <% } else { %>
-                    <p>No bookings found for <%= selectedDate %> .</p>
-                <% } %>
+                    <% } else { %>
+                        <p>No bookings found for <%= selectedDate %> .</p>
+                        <% } %>
             </div>
         </div>
     </div>

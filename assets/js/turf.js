@@ -1,4 +1,41 @@
 console.log('turf script loaded');
+$(document).ready(function () {
+    $('#booking-form').submit(function (e) {
+        e.preventDefault(); // Prevent form submission
+
+        let selectedDate = $('#selected-date').val();
+        let selectedTime = $('input[name="time"]:checked').val();
+
+        if (selectedTime === undefined) {
+            $('#errorModal').modal('show');
+        } else {
+            // Show the confirmation modal
+            $('#confirmModal').find('.modal-body').html(`
+                <p>Please confirm your booking details.</p>
+                <p>Date: ${selectedDate}</p>
+                <p>Time: ${selectedTime}</p>
+            `);
+            $('#confirmModal').modal('show');
+        }
+    });
+
+    // Handle form submission when the confirm button is clicked
+    $('#confirmModal').on('click', '.btn-primary', function () {
+        // Submit the form
+        $('#booking-form').unbind('submit').submit();
+    });
+
+    // Handle cancel button click in the confirm modal
+    $('#confirmModal').on('click', '.btn-dark', function () {
+        $('#confirmModal').modal('hide');
+    });
+
+    // Handle OK button click in the error modal
+    $('#errorModal').on('click', '.btn-primary', function () {
+        $('#errorModal').modal('hide');
+    });
+});
+
 
 //submitting select date form
 function submitDateForm() {

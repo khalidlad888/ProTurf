@@ -6,7 +6,7 @@ body {
 .btn-secondary{
     padding: 2px;
     margin: 4px;
-    width: 70px;
+    width: 15%;
     font-size: 0.95rem;
 }
 
@@ -17,6 +17,6 @@ body {
     font-size: 0.95rem;
     color: black;
     border: none;
-    width: 70px;
+    width: 15%;
     outline: none;
 }
