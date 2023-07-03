@@ -81,6 +81,7 @@ module.exports.createMatch = async function (req, res) {
 
             turf.bookings.push(booking);
             turf.save();
+            req.flash('success', 'Booking is done');
             console.log("Booking is done");
         }
 
@@ -95,9 +96,11 @@ module.exports.createMatch = async function (req, res) {
                 gameName: req.body.gameName,
                 gameLevel: req.body.gameLevel
             });
+            req.flash('success', 'Match Created successfully');
             console.log("Match Created successfully");
             return res.redirect('back');
         }else{
+            req.flash('error', 'Similar Match Name already exists');
             console.log("Similar Match Name already exists");
             return res.redirect('back');
         }

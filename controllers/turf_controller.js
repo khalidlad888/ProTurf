@@ -96,6 +96,7 @@ module.exports.createBooking = async function (req, res) {
 
             turf.bookings.push(booking);
             turf.save();
+            req.flash('success', 'Booking is done');
             console.log("Booking is done");
             return res.redirect('back');
         }

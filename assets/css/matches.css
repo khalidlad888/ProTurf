@@ -6,17 +6,17 @@ body {
 .btn-secondary{
     padding: 2px;
     margin: 4px;
-    width: 15%;
-    font-size: 0.95rem;
+    width: 55px;
+    font-size: 0.8rem;
 }
 
 .btn-booked{
     background: linear-gradient(145deg, #f1f2a4, #d1af88, #c96333);
     padding: 2px;
     margin: 4px;
-    font-size: 0.95rem;
+    font-size: 0.8rem;
     color: black;
     border: none;
-    width: 15%;
+    width: 55px;
     outline: none;
 }

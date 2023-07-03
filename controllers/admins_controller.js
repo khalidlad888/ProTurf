@@ -52,14 +52,14 @@ module.exports.create = async function (req, res) {
         Admin.findOne({ loginID: req.body.loginID }).then((admin) => {
             if (!admin) {
                 let admin = Admin.create(req.body);
-                console.log('Admin Signed Up Successfully');
+                req.flash('success', 'Signed Up Successfully as Admin');
                 return res.redirect('/admins/sign-in');
             } else {
                 return res.redirect('back');
             };
         });
     } catch (err) {
-        // req.flash('error', err);
+        req.flash('error', err);
         console.log(err, "Error in creating the user");
     };
 };
@@ -67,7 +67,7 @@ module.exports.create = async function (req, res) {
 //Sign ip data and create the session for the user
 module.exports.createSession = async function (req, res) {
     try {
-        console.log('Admin Signed In Successfully');
+        req.flash('success', 'Signed In Successfully as Admin');
         return res.redirect('/admins');
     } catch (err) {
         console.log("Error", err);
@@ -77,10 +77,10 @@ module.exports.createSession = async function (req, res) {
 module.exports.destroySession = function (req, res) {
     req.logout(function (err) {
         if (err) {
-            // req.flash('error', 'Error in logging out');
+            req.flash('error', 'Error in logging out');
             console.log(err, "Error in logging out");
         };
-        console.log('Admin Signed Out Successfully');
+        req.flash('success', 'Signed Out Successfully as Admin');
         return res.redirect('/admins/sign-in');
     });
 };

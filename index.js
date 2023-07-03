@@ -16,6 +16,11 @@ const db = require('./config/mongoose');
 const session = require('express-session');
 const passport = require('passport');
 const passportLocal = require('passport-local');
+
+//connect-flash notifications
+const flash = require('connect-flash');
+const flashMware = require('./config/flash-middleware');
+
 //using mongo store for storing session cookies
 const MongoStore = require('connect-mongo')(session);
 
@@ -63,9 +68,12 @@ require('./config/passport-local-strategy')
 
 app.use(passport.setAuthenticatedUser);
 
+//using connect-flash
+app.use(flash());
+app.use(flashMware.setFlash);
+
 //requiring routes
 app.use('/', require('./routes'));
-
 
 //starting server with app.listen on $port
 app.listen(port, function (err) {
