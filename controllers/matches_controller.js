@@ -19,10 +19,16 @@ module.exports.render = async function (req, res) {
                 selectedDate = newSelectedDate.toISOString().split('T')[0];
             };
 
+            let selectedTurf;
+            if (req.query.selectedTurf) {
+                let newSelectedTurf = req.query.selectedTurf;
+                selectedTurf = newSelectedTurf;
+            };
+
             // Fetch the bookings data for the selected date for the current turf
             const bookings = await Booking.find({
                 date: selectedDate,
-                turf: turf
+                turf: selectedTurf
             }).populate('user', 'name');
 
             return res.render('matches', {
@@ -32,6 +38,7 @@ module.exports.render = async function (req, res) {
                 matches: match,
                 currentDate: currentDate,
                 selectedDate: selectedDate,
+                selectedTurf: selectedTurf,
                 users: user
             });
         } else {
@@ -48,13 +55,22 @@ module.exports.createMatch = async function (req, res) {
         //CHECKING DATE AND TIME SELECTED OR NOT
         let notDate = req.body.date;
         if (!notDate) {
+            req.flash('error', 'Please select the date');
             console.error("Please select the date");
             return res.redirect('back');
         };
 
         let notTime = req.body.time;
         if (!notTime) {
+            req.flash('error', 'Please select the time');
             console.error("Please select the time");
+            return res.redirect('back');
+        };
+
+        let notTurf = req.body.turf;
+        if (!notTurf) {
+            req.flash('error', 'Please select the turf');
+            console.error("Please select the turf");
             return res.redirect('back');
         };
 

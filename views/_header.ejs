@@ -1,11 +1,12 @@
-<header class="navbar navbar-expand-lg navbar-light bg-custom">
-    <a class="navbar-brand" id="brand-name" href="#">Pro Sports</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarMenu">
-        <ul class="navbar-nav ml-auto">
-            <% if (locals.user) { %>
+<% if (locals.user) { %>
+    <header class="navbar navbar-expand-lg navbar-light bg-custom">
+        <a class="navbar-brand" id="brand-name" href="/">Pro Sports</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu"
+            aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarMenu">
+            <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="/">
                         Home
@@ -22,7 +23,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/matches/#availableMatches">
+                    <a class="nav-link" href="/#match-list-container">
                         Find a Match
                     </a>
                 </li>
@@ -34,23 +35,46 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/users/sign-out">Sign Out</a>
                 </li>
-            <% } else if (locals.admin) { %>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <%= admin.name %>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/admins/sign-out">Sign Out</a>
-                </li>
-            <% } else { %>
-                <li class="nav-item">
-                    <a class="nav-link" href="/users/sign-in">Sign In</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/users/sign-up">Sign Up</a>
-                </li>
-            <% } %>
-        </ul>
-    </div>
-</header>
+            </ul>
+        </div>
+    </header>
+
+    <% } else if (locals.admin) { %>
+        <header class="navbar navbar-expand-lg navbar-light bg-custom">
+            <a class="navbar-brand" id="brand-name" href="/admins">Pro Sports</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu"
+                aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <%= admin.name %>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admins/sign-out">Sign Out</a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <% } else { %>
+            <header class="navbar navbar-expand-lg navbar-light bg-custom">
+                <a class="navbar-brand" id="brand-name" href="#">Pro Sports</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu"
+                    aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarMenu">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/users/sign-in">Sign In</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/users/sign-up">Sign Up</a>
+                        </li>
+                        <% } %>
+                    </ul>
+                </div>
+            </header>

@@ -1,14 +1,27 @@
 <link rel="stylesheet" type="text/css" href="../css/matches.css">
 
 <div class="container mt-5">
-    <h1>Host a Match</h1>
-
-
+    <h2>Host a Match</h2>
     <div id="select-date-form">
-        <h5>Select Date to check available bookings:</h5>
+        <h6>Select Date and Turf to check available bookings:</h6>
         <form id="date-form">
-            <input type="date" id="selected-date" name="selectedDate" onchange="submitDateForm()"
-                value="<%= selectedDate %>" class="form-control">
+            <div class="form-group">
+                <input type="date" name="selectedDate" class="form-control" id="selected-date"
+                    value="<%= selectedDate %>" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="selectedTurf">Select Turf</label>
+                <br>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <% for (let i=0; i < turf.length; i++) { %>
+                        <label class="btn btn-info">
+                            <input type="radio" name="selectedTurf" id="selected-turf" value="<%= turf[i].id %>" onchange="submitDateForm()">
+                            <%= turf[i].name %>
+                        </label>
+                        <br>
+                        <% } %>
+                </div>
+            </div>
         </form>
     </div>
 
@@ -22,7 +35,7 @@
             <label for="gameName">Select Game</label>
             <select class="form-control" name="gameName" required>
                 <option value="Cricket">Cricket</option>
-                <option value="Football">Football</option>
+                <option value="Football" selected>Football</option>
             </select>
         </div>
         <div class="form-group">
@@ -36,14 +49,7 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="turf">Select Turf</label>
-            <select name="turf" class="form-control">
-                <% for (let i=0; i < turf.length; i++) { %>
-                    <option value="<%= turf[i]._id %>">
-                        <%= turf[i].name %>
-                    </option>
-                    <% } %>
-            </select>
+            <input type="hidden" class="form-control" name="turf" value="<%= selectedTurf %>" required>
         </div>
         <div class="form-group">
             <input type="hidden" class="form-control" name="date" value="<%= selectedDate %>" required>
@@ -131,7 +137,7 @@
             <ul>
                 <% bookings.forEach(booking=> {%>
 
-                    <div class="booking-timeslot">
+                    <div class="booking-timeslot" data-turf-id="<%= booking.turfId %>">
                         <%= booking %>
                     </div>
                     <% }); %>

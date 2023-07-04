@@ -22,3 +22,9 @@ body {
     width: 50px;
     outline: none;
 }
+
+.btn-info{
+    margin: 5px;
+    margin-right: 12px;
+    background-color: #42a5f5;
+}

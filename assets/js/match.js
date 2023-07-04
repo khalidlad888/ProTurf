@@ -12,7 +12,23 @@ function submitDateForm() {
         }
         dateForm.submit();
     }
+    
 }
+
+
+// Function to submit the turf form
+// function submitTurfForm() {
+//     const selectedTurfInput = document.getElementById("selected-turf");
+//     const turfForm = document.getElementById("turf-form");
+
+//     if (turfForm) {
+//         const bookingTurfInput = turfForm.querySelector('input[name="selectedTurf"]');
+//         if (bookingTurfInput) {
+//             bookingTurfInput.value = selectedTurfInput.value;
+//         }
+//         turfForm.submit();
+//     }
+// }
 
 
 // Set the minimum date of the input field to the current date
