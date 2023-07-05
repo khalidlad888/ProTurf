@@ -2,3 +2,55 @@ body {
     background: linear-gradient(60deg, #a4f2f2, #8bc7b5, #338dc9);
     margin: 0px;
 }
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+}
+
+.admin-header h2 {
+    margin-bottom: 0;
+}
+
+.admin-header a {
+    color: blue;
+}
+
+
+.admin-sidebar {
+    background-color: lightgrey;
+    padding: 20px;
+    border-right: 1px solid #ddd;
+    min-height: 100vh;
+    display: none; /* Hide the sidebar by default */
+}
+
+.admin-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.admin-sidebar li {
+    margin-bottom: 10px;
+}
+
+.admin-sidebar a {
+    color: #000;
+    text-decoration: none;
+    display: block;
+    padding: 5px;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+}
+
+.admin-sidebar a:hover {
+    background-color: #ddd;
+}
+
+.admin-content {
+    padding: 20px;
+}

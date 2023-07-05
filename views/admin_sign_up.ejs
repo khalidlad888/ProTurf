@@ -20,7 +20,13 @@
             <div class="form-group">
                 <input type="password" name="confirm_password" class="form-control" placeholder="Confirm Password" required>
             </div>
-
+            <div class="form-control">
+                <select name="turf">
+                    <% for (let i=0; i < turf.length; i++) { %>
+                        <option value="<%= turf[i].id %>"> <%= turf[i].name %></option>
+                    <% } %>
+                </select>
+            </div>
             <input type="submit" value="Sign Up" class="btn btn-primary">
         </form>
     </div>

@@ -43,19 +43,24 @@
                         <li class="mb-3">
                             <div id="turf-data" class="card">
                                 <div class="card-body">
-                                    <span>
-                                        <%= turf.logo%>
-                                    </span>
-                                    <div>
-                                        <a href="#" class="card-link">
-                                            <%=i.name%>
+
+                                    <img src="<%= i.logo%>" alt="<%= i.name%>" id="logo-img">
+                                    <div id="name-container">
+                                        <div>
+                                            <a href="#" class="card-link">
+                                                <strong>
+                                                    <%=i.name%>
+                                                </strong>
                                                 <br>
                                                 <sub>
                                                     <%= i.address %>
                                                 </sub>
-                                        </a>
+                                            </a>
+                                        </div>
+                                        <div>
+                                            <a href="/turf/<%=i.id%>" class="btn btn-dark">Book Now</a>
+                                        </div>
                                     </div>
-                                    <a href="/turf/<%=i.id%>" class="btn btn-dark float-right">Book Now</a>
                                 </div>
                             </div>
                         </li>

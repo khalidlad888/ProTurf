@@ -27,6 +27,10 @@ const MongoStore = require('connect-mongo')(session);
 //Use express static to access assets
 app.use(express.static('./assets'));
 
+//use express statics to access uploads
+app.use('/uploads', express.static(__dirname + '/uploads'));
+
+
 //Use library express-ejs-layouts
 const expresslayouts = require('express-ejs-layouts');
 const { start } = require('repl');

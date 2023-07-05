@@ -1,4 +1,7 @@
 const mongoose = require('mongoose');
+const multer = require('multer');
+const path = require('path');
+const LOGO_PATH = path.join('/uploads/turves/logos');
 
 const turfSchema = new mongoose.Schema({
     name: {
@@ -18,9 +21,9 @@ const turfSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    price:{
+    price: {
         type: Number,
-        required:true
+        required: true
     },
     photos: {
         type: [String]
@@ -35,7 +38,7 @@ const turfSchema = new mongoose.Schema({
     },
     admin: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Admin'  
+        ref: 'Admin'
     },
     bookings: [
         {
@@ -46,6 +49,21 @@ const turfSchema = new mongoose.Schema({
 }, {
     timestamps: true
 })
+
+
+let storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, path.join(__dirname, '..', LOGO_PATH));
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.fieldname + '-' + Date.now());
+    }
+});
+
+//Static functions
+turfSchema.statics.uploadedLogo =  multer({ storage: storage }).single('logo');
+turfSchema.statics.logoPath = LOGO_PATH;
+
 
 const Turf = mongoose.model('Turf', turfSchema);
 

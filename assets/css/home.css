@@ -17,11 +17,12 @@ body {
     margin-right: 10px;
     border-radius: 5px;
     padding: 10px;
+    background: linear-gradient(145deg, #caeeee, #33c9bc)
 }
 
 .host-match a {
     text-decoration: none;
-    color: white;
+    color: black;
     font-weight: bold;
     font-style: italic;
     text-align: center;
@@ -60,6 +61,9 @@ body {
 }
 
 #turf-list-container .card-body {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     padding: 10px;
 }
 
@@ -79,4 +83,18 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     outline: none;
     border: none;
+}
+
+#logo-img{
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#name-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 10px;
 }

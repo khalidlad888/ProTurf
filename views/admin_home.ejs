@@ -1,7 +1,41 @@
 <link rel="stylesheet" type="text/css" href="../css/admin_home.css">
 
-<div id="home-container">
-    <p>
-        <a> This is admins Home</a>
-    </p>
+<div class="admin-header">
+    <h2>Admin Panel</h2>
+    <!-- Button to toggle the sidebar -->
+    <button class="navbar-toggler d-md-none" type="button" data-toggle="collapse" data-target="#adminSidebar"
+        aria-controls="adminSidebar" aria-expanded="false" aria-label="Toggle sidebar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="nav-link" href="/admins/sign-out">Sign Out</a>
 </div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 admin-sidebar collapse d-md-block" id="adminSidebar">
+            <ul>
+                <li><a href="/admins/dashboard">Dashboard</a></li>
+                <li><a href="/admins/bookings">Bookings</a></li>
+                <li><a href="/admins/users">Users</a></li>
+                <li><a href="/admins/reports">Reports</a></li>
+                <li><a href="/admins/setting/<%= admin.id%>">Settings</a></li>
+            </ul>
+        </div>
+        <div class="col-md-9 admin-content">
+            <!-- Content Goes Here -->
+            <h3>Welcome to the Admin Panel</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla id velit vitae metus interdum feugiat.
+                Quisque consectetur, neque et mattis dignissim, lacus sem suscipit nisi, nec pellentesque lacus arcu
+                ut metus. Cras nec tincidunt enim, nec gravida nulla.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Function to toggle the sidebar on mobile devices
+    $(document).ready(function () {
+        $(".navbar-toggler").on("click", function () {
+            $("#adminSidebar").toggle();
+        });
+    });
+</script>

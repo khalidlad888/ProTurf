@@ -20,6 +20,19 @@ router.post('/create-session', passport.authenticate(
 
 router.get('/sign-out', adminsController.destroySession);
 
+// router.get('/dashboard', adminsController.signIn);
+
+// router.get('/bookings', adminsController.signIn);
+
+// router.get('/users', adminsController.signIn);
+
+// router.get('/reports', adminsController.signIn);
+
+router.get('/setting/:id', passport.checkAuthentication, adminsController.setting);
+
+router.post('/setting/update-turf', adminsController.update);
+
+
 
 //exporting router
 module.exports = router;
