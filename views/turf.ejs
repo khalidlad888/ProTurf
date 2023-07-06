@@ -117,25 +117,6 @@
                 </div>
             </div>
 
-
-            <!-- <div id="bookings-container" class="mt-3" >
-                <% if (bookings.length> 0) { %>
-                    <h5>Bookings for <%= selectedDate %> :</h5>
-                    <ul>
-                        <% bookings.forEach(booking=> {
-                            booking.time.forEach(time => { %>
-                            <li>
-                                <div id="booking-timeslot">
-                                    <%= time %>
-                                </div>
-                            </li>
-                            <% }); %>
-                                <% }); %>
-                    </ul>
-                <% } else { %>
-                    <p>No bookings found for <%= selectedDate %> .</p>
-                <% } %>
-            </div> -->
             <div id="bookings-container" class="mt-3" style="display: none;">
                 <% if (bookings.length> 0) { %>
                     <h5>Bookings for <%= selectedDate %> :</h5>

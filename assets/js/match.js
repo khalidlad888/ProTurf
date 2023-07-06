@@ -12,7 +12,7 @@ function submitDateForm() {
         }
         dateForm.submit();
     }
-    
+
 }
 
 
@@ -37,30 +37,28 @@ const currentDate = new Date().toISOString().split('T')[0];
 selectDateInput.min = currentDate;
 
 
-
 $(document).ready(function () {
-    var x = $(".booking-timeslot").map(function () {
+    var bookedSlots = [];
+
+    $(".booking-timeslot").each(function () {
         var htmlContent = $(this).html();
-        var timeSlot = htmlContent.match(/\d{1,2}:\d{2}(?:AM|PM) to \d{1,2}:\d{2}(?:AM|PM)/)[0];
-        return timeSlot;
-    }).get();
+        var timeSlots = htmlContent.match(/\d{1,2}:\d{2}(?:AM|PM) to \d{1,2}:\d{2}(?:AM|PM)/g);
+        bookedSlots = bookedSlots.concat(timeSlots);
+    });
 
-    const bookedSlots = x;
-
-    // Convert the NodeList to an array using Array.from or spreading
     const labels = Array.from(document.querySelectorAll(".btn-outline-success"));
 
-    // Loop through all the labels associated with the checkboxes
     labels.forEach(label => {
         const slot = label.querySelector('input').value;
         const input = label.querySelector('input[type="checkbox"]');
         if (bookedSlots.includes(slot)) {
             label.classList.remove("btn-outline-success");
-            label.classList.add("btn-booked"); // Add a CSS class to reflect the booked state
-            input.disabled = true; // disable the button to prevent further bookings
+            label.classList.add("btn-booked");
+            input.disabled = true;
         }
     });
 });
+
 
 $(document).ready(function () {
     $('#matchForm').submit(function (e) {
