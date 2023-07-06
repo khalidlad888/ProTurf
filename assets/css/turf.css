@@ -80,22 +80,22 @@ body {
     border-radius: 5px;
 }
 
-.btn-secondary{
+.btn-outline-success{
+    background-color: white;
     padding: 2px;
     margin: 4px;
     margin-bottom: 8px;
-    width: 50px;
+    width: 52px;
     font-size: 0.65rem;
 }
 
 .btn-booked{
-    background: linear-gradient(145deg, #f1f2a4, #d1af88, #c96333);
-    padding: 2px;
+    background-color: darkgray;
+    padding: 3px;
     margin: 4px;
-    font-size: 0.65rem;
     margin-bottom: 8px;
+    font-size: 0.65rem;
     color: black;
     border: none;
-    width: 50px;
-    outline: none;
+    width: 52px;
 }
