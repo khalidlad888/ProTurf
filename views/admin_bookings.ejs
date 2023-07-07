@@ -1,0 +1,64 @@
+<link rel="stylesheet" type="text/css" href="../../css/admin_home.css">
+
+<div class="admin-header">
+    <h2>Admin Panel</h2>
+    <!-- Button to toggle the sidebar -->
+    <button class="navbar-toggler d-md-none" type="button" data-toggle="collapse" data-target="#adminSidebar"
+        aria-controls="adminSidebar" aria-expanded="false" aria-label="Toggle sidebar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 admin-sidebar collapse d-md-block" id="adminSidebar">
+            <ul>
+                <li><a href="/admins">Dashboard</a></li>
+                <li><a href="/admins/bookings/<%= admin.id%>">Bookings</a></li>
+                <li><a href="/admins/users/<%= admin.id%>">Users</a></li>
+                <li><a href="/admins/setting/<%= admin.id%>">Settings</a></li>
+                <li><a href="/admins/sign-out">Sign Out</a></li>
+            </ul>
+        </div>
+        <div class="col-md-9 admin-content">
+            <h3>List bookings</h3>
+            <ul class="list-unstyled">
+                <% for (let i of turf.bookings) { %>
+                    <li class="mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div>
+                                    <a class="card-link">
+                                        <%= i.date%>
+                                    </a>
+                                    <a class="card-link">
+                                        <%= i.time%>
+                                    </a>
+                                    <a class="card-link">
+                                        <%= i.user.name%>
+                                    </a>
+                                    <a class="card-link">
+                                        <%= i.user.number%>
+                                    </a>
+                                    <a class="card-link">
+                                        <%= i.user.email%>
+                                    </a>
+                                </div>
+                                <a href="#" class="btn btn-dark float-right">Cancel</a>
+                            </div>
+                        </div>
+                    </li>
+                    <% } %>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Function to toggle the sidebar on mobile devices
+    $(document).ready(function () {
+        $(".navbar-toggler").on("click", function () {
+            $("#adminSidebar").toggle();
+        });
+    });
+</script>

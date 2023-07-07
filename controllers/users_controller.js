@@ -28,7 +28,7 @@ module.exports.create = async function (req, res) {
         return res.redirect('back');
     };
     try {
-        User.findOne({ email: req.body.email }).then((user) => {
+        User.findOne({ number: req.body.number }).then((user) => {
             if (!user) {
                 let user = User.create(req.body);
                 req.flash('success', 'Signed Up Successfully');

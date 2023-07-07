@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="../css/admin_home.css">
+<link rel="stylesheet" type="text/css" href="../../css/admin_home.css">
 
 <div class="admin-header">
     <h2>Admin Panel</h2>
@@ -21,9 +21,29 @@
             </ul>
         </div>
         <div class="col-md-9 admin-content">
-            <h3>Welcome to the Admin Panel</h3>
-            <h6>Coming Soon...!</h6>
-            <p> Thank you for giving us the chance to serve you. Hold until we get your dashboard ready</p>
+            <h3>List of users book at your turf</h3>
+            <ul class="list-unstyled">
+                <% for (let i of turf.bookings) { %>
+                <li class="mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div>
+                                <a class="card-link">
+                                    <%= i.user.name%>
+                                </a>
+                                <a class="card-link">
+                                    <%= i.user.number%>
+                                </a>
+                                <a class="card-link">
+                                    <%= i.user.email%>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <% } %>
+            </ul>
+
         </div>
     </div>
 </div>

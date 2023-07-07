@@ -140,3 +140,52 @@ module.exports.update = async function (req, res) {
         req.flash('error', 'Error in updating turf data');
     }
 };
+
+module.exports.renderBookings = async function (req, res) {
+    try {
+        if (req.user) {
+            let admin = await Admin.findById(req.params.id);
+            let turf = await Turf.find({ _id: req.user.turf })
+            .populate({
+                path: 'bookings',
+                populate: [
+                  { path: 'user' },
+                ]
+              })
+            return res.render('admin_bookings', {
+                title: " | Admin Booking",
+                profile_admin: admin,
+                turf: turf[0],
+            });
+        } else {
+            return res.redirect('/admins/sign-in');
+        }
+    } catch (err) {
+        console.log("Error in rendering bookings", err);
+    };
+};
+
+
+module.exports.renderAdminUsers = async function (req, res) {
+    try {
+        if (req.user) {
+            let admin = await Admin.findById(req.params.id);
+            let turf = await Turf.find({ _id: req.user.turf })
+            .populate({
+                path: 'bookings',
+                populate: [
+                  { path: 'user' },
+                ]
+              })
+            return res.render('admin_users_page', {
+                title: " | Turf Users",
+                profile_admin: admin,
+                turf: turf[0],
+            });
+        } else {
+            return res.redirect('/admins/sign-in');
+        }
+    } catch (err) {
+        console.log("Error in rendering bookings", err);
+    };
+};

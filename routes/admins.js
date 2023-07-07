@@ -20,13 +20,9 @@ router.post('/create-session', passport.authenticate(
 
 router.get('/sign-out', adminsController.destroySession);
 
-// router.get('/dashboard', adminsController.signIn);
+router.get('/bookings/:id', passport.checkAuthentication, adminsController.renderBookings);
 
-// router.get('/bookings', adminsController.signIn);
-
-// router.get('/users', adminsController.signIn);
-
-// router.get('/reports', adminsController.signIn);
+router.get('/users/:id', passport.checkAuthentication, adminsController.renderAdminUsers);
 
 router.get('/setting/:id', passport.checkAuthentication, adminsController.setting);
 
