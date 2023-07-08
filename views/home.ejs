@@ -4,29 +4,33 @@
         <%if (locals.user) { %>
             <div id="host-match-container" class="container">
                 <div class="host-match btn-dark">
-                    <a href="/matches">Host Your Match</a>
+                    <a href="/matches">Host a Match</a>
                 </div>
                 <div class="host-match btn-dark">
-                    <a href="/">Join Local Games</a>
+                    <a href="/">Join Local Challenge</a>
                 </div>
             </div>
             <div id="match-list-container">
                 <ul class="list-unstyled">
                     <% for (let match of matches) { %>
-                        <% if(match.date> currentDate) {%>
+                        <% if(match.date >= currentDate) {%>
                             <li class="mb-3">
                                 <div id="match-data" class="card">
                                     <div class="card-body">
                                         <div>
-                                            <a class="card-link">
-                                                <%=match.matchName%>
+                                            <a >
+                                                <%=match.matchName%> at <%= match.turf.name %>
+                                                    <br>
+                                                    <small>
+                                                        <%= match.date %>
+                                                    </small>
                                                     <br>
                                                     <sub>
-                                                        <%= match.date, match.time%>
+                                                        <%= match.time %>
                                                     </sub>
                                             </a>
                                         </div>
-                                        <a href="#" class="btn btn-dark float-right">Join Now</a>
+                                        <a href="#" class="btn btn-dark float-right">Accept Challenge</a>
                                     </div>
                                 </div>
                             </li>

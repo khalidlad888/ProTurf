@@ -9,6 +9,8 @@ const homeController = require('../controllers/home_controller');
 //router for getting req of home
 router.get('/', passport.checkAuthentication, homeController.home);
 
+router.get('/faq', homeController.fAQ);
+
 router.use('/users', require('./users'));
 router.use('/admins', require('./admins'));
 router.use('/api', require('./api'));
