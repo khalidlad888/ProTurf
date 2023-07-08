@@ -96,7 +96,7 @@ $(document).ready(function () {
         const input = element.querySelector('input[type="checkbox"]');
 
         if (selectDateInput.value == currentDate) {
-            if (lastLetter < currentTime) {
+            if (lastLetter <= currentTime) {
                 element.classList.remove("btn-outline-success");
                 element.classList.add("btn-booked");
                 input.disabled = true;
