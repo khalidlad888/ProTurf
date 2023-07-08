@@ -1,4 +1,4 @@
-console.log('turf script loaded');
+console.log('match script loaded');
 
 //submitting select date form
 function submitDateForm() {
@@ -21,6 +21,7 @@ const currentDate = new Date().toISOString().split('T')[0];
 selectDateInput.min = currentDate;
 
 
+//disabling booked slots
 $(document).ready(function () {
     var bookedSlots = [];
 
@@ -44,6 +45,7 @@ $(document).ready(function () {
 });
 
 
+//displaying modal for confirmation
 $(document).ready(function () {
     $('#matchForm').submit(function (e) {
         e.preventDefault(); // Prevent form submission
@@ -78,5 +80,27 @@ $(document).ready(function () {
     // Handle OK button click in the error modal
     $('#errorModal').on('click', '.btn-primary', function () {
         $('#errorModal').modal('hide');
+    });
+});
+
+
+//disabling passed timeslots in day as per time
+$(document).ready(function () {
+    // Assuming you have already defined `today` and `currentTime` variables
+    let today = new Date();
+    let currentTime = today.getHours();
+
+    const elements = document.querySelectorAll(".btn-outline-success");
+    Array.from(elements).forEach(element => {
+        const lastLetter = element.id.split('-').pop();
+        const input = element.querySelector('input[type="checkbox"]');
+
+        if (selectDateInput.value == currentDate) {
+            if (lastLetter < currentTime) {
+                element.classList.remove("btn-outline-success");
+                element.classList.add("btn-booked");
+                input.disabled = true;
+            }
+        }
     });
 });

@@ -1,4 +1,6 @@
 console.log('turf script loaded');
+
+//submit booking form with modal
 $(document).ready(function () {
     $('#booking-form').submit(function (e) {
         e.preventDefault(); // Prevent form submission
@@ -57,7 +59,7 @@ const selectDateInput = document.getElementById('selected-date');
 const currentDate = new Date().toISOString().split('T')[0];
 selectDateInput.min = currentDate;
 
-
+//disable booked timeslots
 $(document).ready(function () {
     var bookedSlots = [];
 
@@ -76,6 +78,28 @@ $(document).ready(function () {
             label.classList.remove("btn-outline-success");
             label.classList.add("btn-booked");
             input.disabled = true;
+        }
+    });
+});
+
+
+//disabling passed timeslots in day as per time
+$(document).ready(function () {
+    // Assuming you have already defined `today` and `currentTime` variables
+    let today = new Date();
+    let currentTime = today.getHours();
+
+    const elements = document.querySelectorAll(".btn-outline-success");
+    Array.from(elements).forEach(element => {
+        const lastLetter = element.id.split('-').pop();
+        const input = element.querySelector('input[type="checkbox"]');
+
+        if (selectDateInput.value == currentDate) {
+            if (lastLetter < currentTime) {
+                element.classList.remove("btn-outline-success");
+                element.classList.add("btn-booked");
+                input.disabled = true;
+            }
         }
     });
 });
