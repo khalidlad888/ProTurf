@@ -4,7 +4,6 @@ const matchSchema = new mongoose.Schema({
     matchName: {
         type: String,
         required: true,
-        unique: true
     },
     gameName: {
         type: String,

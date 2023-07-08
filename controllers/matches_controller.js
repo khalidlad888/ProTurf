@@ -86,6 +86,19 @@ module.exports.createMatch = async function (req, res) {
             return res.redirect('back');
         }
 
+        let match = await Match.create({
+            date: req.body.date,
+            time: req.body.time,
+            user: req.user._id,
+            turf: req.body.turf,
+            matchName: req.body.matchName,
+            gameName: req.body.gameName,
+            gameLevel: req.body.gameLevel
+        });
+        req.flash('success', 'Match Created successfully');
+        console.log("Match Created successfully");
+
+
         let turf = await Turf.findById(req.body.turf)
         if (turf) {
             let booking = await Booking.create({
@@ -99,28 +112,8 @@ module.exports.createMatch = async function (req, res) {
             turf.save();
             req.flash('success', 'Booking is done');
             console.log("Booking is done");
-        }
-
-        let match = await Match.findOne({matchName: req.body.matchName})
-        if (!match){
-            let match = await Match.create({
-                date: req.body.date,
-                time: req.body.time,
-                user: req.user._id,
-                turf: req.body.turf,
-                matchName: req.body.matchName,
-                gameName: req.body.gameName,
-                gameLevel: req.body.gameLevel
-            });
-            req.flash('success', 'Match Created successfully');
-            console.log("Match Created successfully");
-            return res.redirect('back');
-        }else{
-            req.flash('error', 'Similar Match Name already exists');
-            console.log("Similar Match Name already exists");
             return res.redirect('back');
         }
-
     } catch (err) {
         console.log('Error in creating match', err);
     };

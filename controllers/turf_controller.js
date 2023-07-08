@@ -80,6 +80,7 @@ module.exports.createBooking = async function (req, res) {
         });
 
         if (existingBooking) {
+            req.flash('error', 'Booking is not done, already booked by someone');
             console.log("Booking already exists");
             return res.redirect('back');
         }

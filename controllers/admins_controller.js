@@ -1,5 +1,6 @@
 const Admin = require('../models/admin');
 const Turf = require('../models/turf');
+const Booking = require('../models/booking');
 const fs = require('fs');
 const path = require('path');
 
@@ -188,4 +189,24 @@ module.exports.renderAdminUsers = async function (req, res) {
     } catch (err) {
         console.log("Error in rendering bookings", err);
     };
+};
+
+module.exports.destryBooking = async function(req, res){
+    try {
+        let booking = await Booking.findById(req.params.id);
+        let turfId = booking.turf;
+
+        await booking.deleteOne();
+
+        let turf = await Turf.findByIdAndUpdate(turfId, { $pull: { bookings: req.params.id } });
+
+        req.flash('success', 'Booking Cancelled Successfully');
+        console.log('Booking Cancelled Successfully');
+
+        return res.redirect('back');
+
+    } catch (err) {
+        if(err){console.log(err)};
+        return res.redirect('back');     
+    }
 };

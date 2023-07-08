@@ -2,6 +2,8 @@ const User = require('../models/user');
 const Turf = require('../models/turf');
 const Match = require('../models/match');
 
+const currentDate = new Date().toISOString().split('T')[0];
+
 module.exports.home = async function (req, res) {
     try {
         if (req.user) {
@@ -12,7 +14,8 @@ module.exports.home = async function (req, res) {
                 title: " | Home",
                 turf: turf,
                 matches: match,
-                users: user
+                users: user,
+                currentDate: currentDate
             });
         }else{
             return res.redirect('/users/sign-in');
