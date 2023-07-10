@@ -1,0 +1,85 @@
+<link rel="stylesheet" type="text/css" href="../../css/user_profile.css">
+
+<div class="container">
+    <div id="profile">
+
+        <h4>
+            <%= profile_user.name %>
+                <%= title %>
+        </h4>
+
+        <img src="/images/user_profile_photo.avif" alt="<%= profile_user.name %>" class="profile-photo">
+
+        <% if (user.id==profile_user.id) { %>
+            <!-- If user is logged in, show edit form -->
+            <form action="/users/update/<%= profile_user.id %>" enctype="multipart/form-data" method="post">
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Your Name" value="<%= profile_user.name%>" required
+                        class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Your Email" value="<%= profile_user.email%>" required
+                        class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <input type="number" name="number" placeholder="Your Mobile No." value="<%= profile_user.number%>"
+                        maxlength="10" required class="form-control">
+                </div>
+
+                <!-- <div class="form-group">
+                    <div class="custom-file">
+                        <input type="file" name="avatar" id="avatar" class="custom-file-input">
+                        <label for="avatar" class="custom-file-label">Choose a file</label>
+                    </div>
+                </div> -->
+
+                <input type="submit" value="Update" class="btn btn-primary">
+            </form>
+            <% } else { %>
+                <!-- else show only profile info -->
+                <p>
+                    <%= profile_user.name %>
+                </p>
+                <p>
+                    <%= profile_user.email %>
+                </p>
+                <p>
+                    <%= profile_user.number %>
+                </p>
+                <% } %>
+    </div>
+
+    <div>
+        <h4>List bookings</h4>
+        <ul class="list-unstyled">
+            <% for (let i of bookings) { %>
+                <% if(i.date>= currentDate) { %>
+                    <li class="mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div>
+                                    <a class="card-link">
+                                        <%= i.turf.name %>
+                                    </a>
+                                    <a class="card-link">
+                                        <%= i.date %>
+                                    </a>
+                                    <a class="card-link">
+                                        <%= i.time %>
+                                    </a>
+                                </div>
+                                <!-- <a href="/admins/cancel-booking/<%= i.id%>" class="btn btn-dark float-right">Cancel</a> -->
+                            </div>
+                        </div>
+                    </li>
+                    <% } %>
+                        <% } %>
+        </ul>
+    </div>
+    <div>
+        <h4>Support and Help</h4>
+        <p>For FAQs and support, visit our <a href="/faq">FAQ page</a>.</p>
+        <p>Contact us at prosports.mh09@gmail.com</p>
+    </div>
+</div>
